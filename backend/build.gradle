@@ -1,0 +1,70 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.kyobo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+
+	// RestAPI
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	// Querydsl
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
+	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+
+	// Swagger 활성화
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
+
+	// json
+	implementation 'org.json:json:20230227'
+	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+	// 테스트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// Querydsl 빌드 옵션
+// def querydslDir = "$buildDir/generated/querydsl"
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
