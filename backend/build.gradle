@@ -24,6 +24,8 @@ repositories {
 }
 
 dependencies {
+	// swagger 사용
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
 
 	// RestAPI
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -43,6 +45,9 @@ dependencies {
 	// mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	// validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
 	// Querydsl
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
@@ -60,6 +65,14 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// springdoc-openapi for Swagger UI
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
+
 }
 
 // Querydsl 빌드 옵션
