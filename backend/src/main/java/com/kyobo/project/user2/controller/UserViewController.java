@@ -18,7 +18,7 @@ public class UserViewController {
     private final UserViewController userviewservice;
 
     @Autowired
-    public MemberController(UserViewController userviewservice) {
+    public UserViewController(UserViewController userviewservice) {
         this.userviewservice = userviewservice;
     }
 
