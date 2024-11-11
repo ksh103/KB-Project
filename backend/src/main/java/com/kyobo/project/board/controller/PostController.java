@@ -20,7 +20,7 @@ public class PostController {
 
     }
 
-    //특정ID의 게시글 삭제
+    //특정ID의 ㅁ게시글 삭제
     @DelectMapping("/delect")
     public void delectPost {
 
