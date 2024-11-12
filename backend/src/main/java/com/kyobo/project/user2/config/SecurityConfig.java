@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@Configuration  // 설정 클래스 지정
+@Configuration  // 설정 클래스 지정d
 @EnableWebSecurity  // Spring Security 활성화
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
