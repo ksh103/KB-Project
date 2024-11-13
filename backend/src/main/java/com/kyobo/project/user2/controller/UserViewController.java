@@ -1,7 +1,7 @@
 // 회원조회(회원 이력 조회)
 // REST API 요청 처리
 // 주석 추가
-package com.kyobo.project.user.controller;
+package com.example.demo.controller;
 
 import com.example.demo.model.Member;
 import com.example.demo.service.MemberService;
