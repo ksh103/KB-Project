@@ -1,14 +1,18 @@
 package com.kyobo.project.board.domain;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
+import lombok.*;
 
+@Entity
+@Getter
+@Table(name = "post")
 public class Post {
 
-    // 현정 수정 필요!
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "gonggu_id", nullable = false, unique = true)
     private int gongguId;
 
@@ -19,7 +23,7 @@ public class Post {
     private String userEmail;
 
     @Column(name = "gonggu_contents", nullable = false)
-    private String gongguContects;
+    private String gongguContents;
 
     @Column(name = "gonggu_dead_line", nullable = false)
     private LocalDate gongguDeadLine;
@@ -44,5 +48,24 @@ public class Post {
 
     @Column(name = "ls_ch_dt", nullable = false)
     private LocalDate lsChDt;
+
+    @Builder
+    public Post(int gongguId, int userId, String userEmail, String gongguContents, LocalDate gongguDeadLine, String gongguTemperature,
+                String deadLineYn, int targetParticipants, int currentParticipants, String delYn, LocalDate regDt, LocalDate lsChDt) {
+
+        this.gongguId = gongguId;
+        this.userId = userId;
+        this.userEmail = userEmail;
+        this.gongguContents = gongguContents;
+        this.gongguDeadLine = gongguDeadLine;
+        this.gongguTemperature = gongguTemperature;
+        this.deadLineYn = deadLineYn;
+        this.targetParticipants = targetParticipants;
+        this.currentParticipants = currentParticipants;
+        this.delYn = delYn;
+        this.regDt = regDt;
+        this.lsChDt = lsChDt;
+
+    }
 
 }
