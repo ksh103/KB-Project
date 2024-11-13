@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface PostRepository extends JpaRepository<Post, Long> {
+public interface PostRepository {
 
     List<Post> findAll();
 
-    Optional<Post> findById(int gongguId);
+    Optional<Post> findByGongguId(int gongguId);
+
+    Optional<Post> delectBygongguId(int gongguId);
 
 }

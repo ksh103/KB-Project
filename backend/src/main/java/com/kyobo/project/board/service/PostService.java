@@ -15,7 +15,11 @@ public class PostService {
     }
 
     public Optional<Post> findPost(int gongguId) {
-        return postRepository.findById(gongguId);
+        return postRepository.findByGongguId(gongguId);
+    }
+
+    public Optional<Post> deleteByPost(int gongguId) {
+        return postRepository.delectBygongguId(gongguId);
     }
 
 }

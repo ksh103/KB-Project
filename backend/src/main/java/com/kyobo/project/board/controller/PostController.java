@@ -4,6 +4,8 @@ import com.kyobo.project.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,31 +21,43 @@ public class PostController {
 
     //전체 게시글 조회(메인 화면)
     @GetMapping("/all")
-    public List<Post> getPostAll() {
+    public ResponseEntity<List<Post>> getPostAll() {
 
         log.info("getPostAll 시작!");
-        List<Post> postList = postService.findPostsAll();
 
-        return postList;
+        List<Post> postListShow = postService.findPostsAll();
+
+        if (postListShow != null) {
+            return new ResponseEntity<>(postListShow, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(postListShow, HttpStatus.BAD_REQUEST);
+        }
 
     }
 
     //특정ID의 게시글 조회
     @GetMapping("/{postId}")
-    public Optional<Post> getPost(@PathVariable int postId) {
+    public ResponseEntity<Optional<Post>> getPost(@PathVariable int postId) {
 
         log.info("getPost 시작!");
-        Optional<Post> post = postService.findPost(postId);
 
-        return post;
+        Optional<Post> postShow = postService.findPost(postId);
+
+        if (postShow != null) {
+            return new ResponseEntity<>(postShow, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(postShow, HttpStatus.BAD_REQUEST);
+        }
 
     }
 
     //특정ID의 게시글 삭제
-    @PostMapping("/delect")
-    public void delectPost() {
+    @PostMapping("/delect/{postID}")
+    public void delectPost(@PathVariable int postId) {
 
         log.info("delectPost 시작!");
+
+        postService.deleteByPost(postId);
 
     }
 
